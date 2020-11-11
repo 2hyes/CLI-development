@@ -11,11 +11,17 @@
     - 구글: 구글 트렌드에서 csv 파일 다운로드
     - 네이버: 네이버 데이터랩 openAPI 활용
     - 카카오: 카카오 트렌드에서 excel 파일 다운로드
-  - 소비자심리지수, 경기동행지수 순환변동치
+  - 소비자심리지수(CCSI), 경기동행지수(CCI) 순환변동치
   : 한국은행 경제통계시스템 API 활용
 
 ## 2. 예측 모델 소개
-진행중
+
+y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되는 CCSI)
+: 해당 월의 주차들 레코드들의 평균값들을 데이터셋으로 활용
+
+- multiple linear regression
+- regression decision tree
+- random forest
 
 ## 3. 개발 환경
 1) 개발 환경
