@@ -15,7 +15,7 @@
   : 한국은행 경제통계시스템 API 활용
 
   - 파일 소개
-  ```
+```
   📦CLI-development
  ┣ 📂data
  ┃ ┣ 📜all-news.csv
@@ -36,7 +36,7 @@
  ┣ 📜getTrainTestSet.py
  ┣ 📜prediction-decisiontree.ipynb
  ┗ 📜prediction-multiregression.ipynb
-  ```
+```
 
 ## 2. 예측 모델 소개
 
