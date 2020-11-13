@@ -14,12 +14,38 @@
   - 소비자심리지수(CCSI), 경기동행지수(CCI) 순환변동치
   : 한국은행 경제통계시스템 API 활용
 
+  - 파일 소개
+  ```
+  📦CLI-development
+ ┣ 📂data
+ ┃ ┣ 📜all-news.csv
+ ┃ ┣ 📜bigkinds.json
+ ┃ ┣ 📜googletrend-month.csv
+ ┃ ┣ 📜googletrend.csv
+ ┃ ┣ 📜kakaotrend-month.csv
+ ┃ ┗ 📜kakaotrend.csv
+ ┣ 📂dataset
+ ┃ ┣ 📜ccsi.pkl
+ ┃ ┣ 📜predictors.pkl
+ ┃ ┣ 📜X_test.pkl
+ ┃ ┣ 📜X_train.pkl
+ ┃ ┣ 📜y_test.pkl
+ ┃ ┗ 📜y_train.pkl
+ ┣ 📜check-google-trends-with-CCI.ipynb
+ ┣ 📜get-data.py
+ ┣ 📜getTrainTestSet.py
+ ┣ 📜prediction-decisiontree.ipynb
+ ┗ 📜prediction-multiregression.ipynb
+  ```
+
 ## 2. 예측 모델 소개
 
 y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되는 CCSI)
 : 해당 월의 주차들 레코드들의 평균값들을 데이터셋으로 활용
 
 - multiple linear regression
+- Spline linear regression
+- SVM
 - regression decision tree
 - random forest
 
@@ -43,5 +69,9 @@ python get-data.py
 ```
 [get-data.py](https://github.com/2hyes/CLI-development/blob/master/get-data.py)에 네이버데이터랩 API client id, pw / 한국은행 openAPI api key / 저장할 database의 id, pw, db를 입력하면, 필요한 데이터셋이 모두 데이터베이스에 저장된다.
 
-2. 예측
-진행중
+2. 트레이닝 테스트셋 분할(split train, testset)
+```
+python getTrainTestSet.py
+```
+[getTrainTestSet.py](https://github.com/2hyes/CLI-development/blob/master/getTrainTestSet.py)를 실행하면, 분할된 train, test set이 pkl파일로 저장된다.
+
