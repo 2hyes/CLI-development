@@ -9,11 +9,14 @@ Step1. data load
 """
 def loading_data():
     ## DB connection
-    conn = pymysql.connect(host = "127.0.0.1", user = [USER], passwd = [PASSWORD], db = [DATABASE], cursorclass = pymysql.cursors.DictCursor)
+    # conn = pymysql.connect(host = "127.0.0.1", user = [USER], passwd = [PASSWORD], db = [DATABASE], cursorclass = pymysql.cursors.DictCursor)
+    # cur = conn.cursor()
+
+    conn = pymysql.connect(host = "127.0.0.1", user = 'root', passwd = 'yshs0310', db = 'CLI', cursorclass = pymysql.cursors.DictCursor)
     cur = conn.cursor()
 
     cur.execute("show databases")
-    cur.execute("use [DATABASE]")
+    cur.execute("use CLI")
 
     ## Table data loading
     # news
@@ -123,17 +126,17 @@ def getTrainTestSet(X_df, ccsi):
     y = df[['ccsi']] # y: 반응변수 dataframe
 
     # CV를 활용하기 위해, validate set은 따로 분할하지 않는다.
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state= 4)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state= 15)
     return X_train, X_test, y_train, y_test
     
 
 ###################### main ######################
-
-X_df, predictors, ccsi = getX_y_dateframe()
-X_train, X_test, y_train, y_test = getTrainTestSet(X_df, ccsi)
-pickle.dump(X_train, open('./dataset/X_train.pkl','wb'))
-pickle.dump(X_test, open('./dataset/X_test.pkl','wb'))
-pickle.dump(y_train, open('./dataset/y_train.pkl','wb'))
-pickle.dump(y_test, open('./dataset/y_test.pkl','wb'))
-pickle.dump(ccsi, open('./dataset/ccsi.pkl','wb'))
-pickle.dump(predictors, open('./dataset/predictors.pkl','wb'))
+if __name__ == "__main__":
+    X_df, predictors, ccsi = getX_y_dateframe()
+    X_train, X_test, y_train, y_test = getTrainTestSet(X_df, ccsi)  
+    pickle.dump(X_train, open('./dataset/X_train.pkl','wb'))
+    pickle.dump(X_test, open('./dataset/X_test.pkl','wb'))
+    pickle.dump(y_train, open('./dataset/y_train.pkl','wb'))
+    pickle.dump(y_test, open('./dataset/y_test.pkl','wb'))
+    pickle.dump(ccsi, open('./dataset/ccsi.pkl','wb'))
+    pickle.dump(predictors, open('./dataset/predictors.pkl','wb'))
