@@ -48,6 +48,17 @@ y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되
 - SVM
 - regression decision tree
 - random forest
+- 더 다양한 모델 고려중
+
+| model | parameter | training RMSE | test RMSE | code |
+|----------|:-----------:|:-------:|:----------------:|:----------------:|
+| Multiple linear regression |  | 4.64 | 2.65 | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-multiregression.ipynb) |
+| Ridge linear regression |  |  |  |  |
+| Lasso linear regression |  |  |  |  |
+| SVM |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-SVM.ipynb) |
+| Regression decision tree |  | |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-decisiontree.ipynb) |
+| Random forest |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-randomforest.ipynb) |
+
 
 ## 3. 개발 환경
 1) 개발 환경
