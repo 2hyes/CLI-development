@@ -9,12 +9,9 @@ Step1. data load
 """
 def loading_data():
     ## DB connection
-    # conn = pymysql.connect(host = "127.0.0.1", user = [USER], passwd = [PASSWORD], db = [DATABASE], cursorclass = pymysql.cursors.DictCursor)
-    # cur = conn.cursor()
-
-    conn = pymysql.connect(host = "127.0.0.1", user = 'root', passwd = 'yshs0310', db = 'CLI', cursorclass = pymysql.cursors.DictCursor)
+    conn = pymysql.connect(host = "127.0.0.1", user = [USER], passwd = [PASSWORD], db = [DATABASE], cursorclass = pymysql.cursors.DictCursor)
     cur = conn.cursor()
-
+    
     cur.execute("show databases")
     cur.execute("use CLI")
 
