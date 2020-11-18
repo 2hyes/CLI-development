@@ -35,7 +35,11 @@
  ┣ 📜get-data.py
  ┣ 📜getTrainTestSet.py
  ┣ 📜prediction-decisiontree.ipynb
- ┗ 📜prediction-multiregression.ipynb
+ ┣ 📜prediction-lasso.ipynb
+ ┣ 📜prediction-multiregression.ipynb
+ ┣ 📜prediction-randomforest.ipynb
+ ┣ 📜prediction-ridge.ipynb
+ ┗ 📜prediction-SVM.ipynb
 ```
 
 ## 2. 예측 모델 소개
@@ -44,8 +48,7 @@ y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되
 : 해당 월의 주차들 레코드들의 평균값들을 데이터셋으로 활용
 
 - multiple linear regression
-- Spline linear regression
-- SVM
+- SVM regression
 - regression decision tree
 - random forest
 - 더 다양한 모델 고려중
@@ -55,7 +58,7 @@ y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되
 | Multiple linear regression |  | 4.64 | 2.65 | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-multiregression.ipynb) |
 | Ridge linear regression |  |  |  |  |
 | Lasso linear regression |  |  |  |  |
-| SVM |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-SVM.ipynb) |
+| SVM regression |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-SVM.ipynb) |
 | Regression decision tree |  | |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-decisiontree.ipynb) |
 | Random forest |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-randomforest.ipynb) |
 
