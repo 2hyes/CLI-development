@@ -74,24 +74,24 @@ def getXdataframe(X):
     initializeStacks()
     X_monthly = pd.DataFrame()
     for i in range(len(X)):
-        keyword1_stack.append(X.iloc[i].keyword1)
-        keyword2_stack.append(X.iloc[i].keyword2)
-        keyword3_stack.append(X.iloc[i].keyword3)
-        keyword4_stack.append(X.iloc[i].keyword4)
-        keyword5_stack.append(X.iloc[i].keyword5)
-        google_stack.append(X.iloc[i].google)
-        naver_stack.append(X.iloc[i].naver)
+        keyword1_stack.append(1/X.iloc[i].keyword1)
+        keyword2_stack.append(1/X.iloc[i].keyword2)
+        keyword3_stack.append(1/X.iloc[i].keyword3)
+        keyword4_stack.append(1/X.iloc[i].keyword4)
+        keyword5_stack.append(1/X.iloc[i].keyword5)
+        google_stack.append(1/X.iloc[i].google)
+        naver_stack.append(1/X.iloc[i].naver)
 
         if ( isLastWeekOfThisMonth(X, i) ):
             
-            # 달의 마지막 주차이면, 해당 달의 데이터들의 마지막 주차값을 저장. 
-            keyword1 = keyword1_stack[-1]
-            keyword2 = keyword2_stack[-1]
-            keyword3 = keyword3_stack[-1]
-            keyword4 = keyword4_stack[-1]
-            keyword5 = keyword5_stack[-1]
-            google = google_stack[-1]
-            naver = naver_stack[-1]
+            # 달의 마지막 주차이면, 해당 달의 데이터들의 조화평균을 저장. 
+            keyword1 = 1/np.mean(keyword1_stack)
+            keyword2 = 1/np.mean(keyword2_stack)
+            keyword3 = 1/np.mean(keyword3_stack)
+            keyword4 = 1/np.mean(keyword4_stack)
+            keyword5 = 1/np.mean(keyword5_stack)
+            google = 1/np.mean(google_stack)
+            naver = 1/np.mean(naver_stack)
             
             record = pd.Series([int(X.iloc[i].year), int(X.iloc[i].month), keyword1, keyword2, keyword3, keyword4, keyword5, google, naver])
             row_df = pd.DataFrame([record])
@@ -134,9 +134,9 @@ def getTrainTestSet(X_df, ccsi):
 if __name__ == "__main__":
     X_df, predictors, ccsi = getX_y_dateframe()
     X_train, X_test, y_train, y_test = getTrainTestSet(X_df, ccsi)  
-    pickle.dump(X_train, open('./dataset_lastweek/X_train.pkl','wb'))
-    pickle.dump(X_test, open('./dataset_lastweek/X_test.pkl','wb'))
-    pickle.dump(y_train, open('./dataset_lastweek/y_train.pkl','wb'))
-    pickle.dump(y_test, open('./dataset_lastweek/y_test.pkl','wb'))
-    pickle.dump(ccsi, open('./dataset_lastweek/ccsi.pkl','wb'))
-    pickle.dump(predictors, open('./dataset_lastweek/predictors.pkl','wb'))
+    pickle.dump(X_train, open('./dataset_harmonicMean/X_train.pkl','wb'))
+    pickle.dump(X_test, open('./dataset_harmonicMean/X_test.pkl','wb'))
+    pickle.dump(y_train, open('./dataset_harmonicMean/y_train.pkl','wb'))
+    pickle.dump(y_test, open('./dataset_harmonicMean/y_test.pkl','wb'))
+    pickle.dump(ccsi, open('./dataset_harmonicMean/ccsi.pkl','wb'))
+    pickle.dump(predictors, open('./dataset_harmonicMean/predictors.pkl','wb'))
