@@ -8,7 +8,6 @@ import pickle
 Step1. data load
 """
 
-
 def loading_data():
     ## DB connection
     conn = pymysql.connect(host="127.0.0.1", user=[USER], passwd=[PASSWORD], db=[DATABASE],
@@ -54,7 +53,6 @@ def loading_data():
 """
 Step2. X, y dataframe
 """
-
 
 # 달의 마지막주인지 확인하는 function
 def isLastWeekOfThisMonth(X, index):
@@ -130,7 +128,6 @@ def getX_y_dateframe():
 Step3. Modeling
 - split train and test set
 """
-
 
 def getTrainTestSet(X_df, ccsi):
     df = pd.merge(X_df, ccsi)
