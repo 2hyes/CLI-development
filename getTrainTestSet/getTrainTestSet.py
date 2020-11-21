@@ -11,9 +11,6 @@ def loading_data():
     ## DB connection
     conn = pymysql.connect(host = "127.0.0.1", user = [USER], passwd = [PASSWORD], db = [DATABASE], cursorclass = pymysql.cursors.DictCursor)
     cur = conn.cursor()
-    
-    cur.execute("show databases")
-    cur.execute("use CLI")
 
     ## Table data loading
     # news
@@ -131,9 +128,9 @@ def getTrainTestSet(X_df, ccsi):
 if __name__ == "__main__":
     X_df, predictors, ccsi = getX_y_dateframe()
     X_train, X_test, y_train, y_test = getTrainTestSet(X_df, ccsi)  
-    pickle.dump(X_train, open('./dataset/X_train.pkl','wb'))
-    pickle.dump(X_test, open('./dataset/X_test.pkl','wb'))
-    pickle.dump(y_train, open('./dataset/y_train.pkl','wb'))
-    pickle.dump(y_test, open('./dataset/y_test.pkl','wb'))
-    pickle.dump(ccsi, open('./dataset/ccsi.pkl','wb'))
-    pickle.dump(predictors, open('./dataset/predictors.pkl','wb'))
+    pickle.dump(X_train, open('./dataset/dataset_mean/X_train.pkl','wb'))
+    pickle.dump(X_test, open('./dataset/dataset_mean/X_test.pkl','wb'))
+    pickle.dump(y_train, open('./dataset/dataset_mean/y_train.pkl','wb'))
+    pickle.dump(y_test, open('./dataset/dataset_mean/y_test.pkl','wb'))
+    pickle.dump(ccsi, open('./dataset/dataset_mean/ccsi.pkl','wb'))
+    pickle.dump(predictors, open('./dataset/dataset_mean/predictors.pkl','wb'))
