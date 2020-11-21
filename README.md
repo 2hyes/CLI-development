@@ -77,23 +77,25 @@ y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되
 
 ## 4. 코드 실행 및 결과 재현 방법
 
-1) 데이터셋 준비(save to db table)
+#### 1) 데이터셋 준비(save to db table)
 ```
 python get-data.py
 ```
 [get-data.py](https://github.com/2hyes/CLI-development/blob/master/get-data.py)에 네이버데이터랩 API client id, pw / 한국은행 openAPI api key / 저장할 database의 id, pw, db를 입력하면, 필요한 데이터셋이 모두 데이터베이스에 저장된다.
 
-2) 데이터 전처리(data preprocessing) \
-i. 주간 데이터를 월간 데이터로 변환
-    - 해당 달의 주간 변수값들의 평균
-    - 해당 달의 주간 변수값들의 중앙값
-    - 해당 달의 주간 변수값들의 최대값
-    - 해당 달의 주간 변수값들의 최소값
-    - 해당 달의 마지막 주간 변수값
-    - 해당 달의 주간 변수값들의 조화평균
-ii. 월간 지표인 CCSI에 선형보간법을 적용하여, 주간 데이터에 true y를 생성
+#### 2) 데이터 전처리(data preprocessing) 
 
-- 트레이닝 테스트셋 분할(split train, testset)
+i. 주간 데이터를 월간 데이터로 변환 
+- 해당 달의 주간 변수값들의 평균
+- 해당 달의 주간 변수값들의 중앙값
+- 해당 달의 주간 변수값들의 최대값
+- 해당 달의 주간 변수값들의 최소값
+- 해당 달의 마지막 주간 변수값
+- 해당 달의 주간 변수값들의 조화평균 
+- 월간 지표인 CCSI에 선형보간법을 적용하여, 주간 데이터에 true y를 생성 
+
+
+ii. 트레이닝 테스트셋 분할(split train, testset)
 
 ```
 python ./getTrainTestSet/getTrainTestSet.py
