@@ -120,7 +120,7 @@ def getTrainTestSet(X_df, ccsi):
     y = df[['ccsi']] # y: 반응변수 dataframe
 
     # CV를 활용하기 위해, validate set은 따로 분할하지 않는다.
-    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state= 15)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, train_size=0.8, test_size=0.2, random_state= 15, Shuffle = False)
     return X_train, X_test, y_train, y_test
     
 
