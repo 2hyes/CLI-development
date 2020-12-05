@@ -1,8 +1,8 @@
 # CLI-development
-## 1. 개요
+## 1. Overview
 
-- 목표: Use news counting and portal trends(google,naver,kakao) data to develope new Composite Leading Indicator(경기선행지수) 
-뉴스기사수와 포털 트렌드의 주간 데이터들을 수집하여, 월간 경제 지표인 소비자심리지수를 예측하여 새로운 주간 경제 지표를 개발한다. 
+- 목표: Use news counting and portal trends(google,naver,kakao) data to develope new Composite Leading Indicator <br>
+뉴스기사수와 포털 트렌드의 주간 데이터들을 수집하여, 월간 경제 지표인 소비자심리지수를 예측하여 새로운 주간 경제심리보조지수를 개발한다. 
 
 - 데이터: 
   - 부정적 경제 상황 키워드를 포함하는 뉴스 기사 수
@@ -20,48 +20,66 @@
  ┣ 📂data
  ┃ ┣ 📜all-news.csv
  ┃ ┣ 📜bigkinds.json
- ┃ ┣ 📜googletrend-month.csv
  ┃ ┣ 📜googletrend.csv
- ┃ ┣ 📜kakaotrend-month.csv
  ┃ ┗ 📜kakaotrend.csv
  ┣ 📂dataset
- ┃ ┣ 📜ccsi.pkl
- ┃ ┣ 📜predictors.pkl
- ┃ ┣ 📜X_test.pkl
- ┃ ┣ 📜X_train.pkl
- ┃ ┣ 📜y_test.pkl
- ┃ ┗ 📜y_train.pkl
+ ┃ ┣ 📂dataset_mean
+ ┃ ┃ ┣ 📜ccsi.pkl
+ ┃ ┃ ┣ 📜predictors.pkl
+ ┃ ┃ ┣ 📜X_test.pkl
+ ┃ ┃ ┣ 📜X_train.pkl
+ ┃ ┃ ┣ 📜y_test.pkl
+ ┃ ┃ ┗ 📜y_train.pkl
+ ┃ ┣ 📂dataset_interpolation
+ ┃ ┗ 📂dataset_median
+ ┣ 📂getTrainTestSet
+ ┃ ┣ 📜getTrainTestSet.py
+ ┃ ┣ 📜getTrainTestSet_interpolation.py
+ ┃ ┗ 📜getTrainTestSet_median.py
  ┣ 📜check-google-trends-with-CCI.ipynb
+ ┣ 📜demonstrate_CLI-validity.ipynb
+ ┣ 📜final_model.pkl
+ ┣ 📜final_scaler.pkl
+ ┣ 📜final_table.pkl
  ┣ 📜get-data.py
- ┣ 📜getTrainTestSet.py
- ┣ 📜prediction-decisiontree.ipynb
- ┣ 📜prediction-lasso.ipynb
- ┣ 📜prediction-multiregression.ipynb
- ┣ 📜prediction-randomforest.ipynb
- ┣ 📜prediction-ridge.ipynb
- ┗ 📜prediction-SVM.ipynb
+ ┣ 📜validation-and-Ttest(dataset_interpolation).ipynb
+ ┣ 📜validation-and-Ttest(dataset_interpolation_shuffle).ipynb
+ ┣ 📜validation-and-Ttest(dataset_mean).ipynb
+ ┣ 📜validation-and-Ttest(dataset_mean_shuffle).ipynb
+ ┣ 📜validation-and-Ttest(dataset_median).ipynb
+ ┗ 📜validation-and-Ttest(dataset_median_shuffle).ipynb
 ```
 
-## 2. 예측 모델 소개
+## 2. Data preprocessing
+<b>고려한 전처리 및 데이터 분할 방법</b> <br>
 
-y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되는 CCSI)
+i. 주간 데이터를 월간 데이터로 변환 
+- 해당 달의 주간 변수값들의 평균
+- 해당 달의 주간 변수값들의 중앙값
+- 월간 지표인 CCSI에 선형보간법을 적용하여, 주간 데이터에 true y를 생성 
+
+ii. 트레이닝 테스트셋 분할(split train, testset)
+- random으로 섞어서, 분할
+- 시간의 흐름대로, 2016 ~ 2019년을 training set, 2020년을 test set으로 분할
+
+## 3. Prediction model
+
+y(월말에 제공되는 CCSI), yhat(주간 데이터 레코드로 CCSI를 예측한 값)
 : 해당 월의 주차들 레코드들의 평균값들을 데이터셋으로 활용
 
+<b>고려한 예측 모델들 </b> <br>
+
 - multiple linear regression
-- SVM regression
-- regression decision tree
+- lasso regression
 - random forest
-- 더 다양한 모델 고려중
+- GAMs for regression
 
 | model | parameter | training RMSE | test RMSE | code |
 |----------|:-----------:|:-------:|:----------------:|:----------------:|
 | Multiple linear regression |  | 4.64 | 2.65 | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-multiregression.ipynb) |
-| Ridge linear regression |  |  |  |  |
 | Lasso linear regression |  |  |  |  |
-| SVM regression |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-SVM.ipynb) |
-| Regression decision tree |  | |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-decisiontree.ipynb) |
 | Random forest |  |  |  | [코드](https://github.com/2hyes/CLI-development/blob/master/prediction-randomforest.ipynb) |
-
+| GAMS |  |  |  |  |
 
 ## 3. 개발 환경
 1) 개발 환경
@@ -76,6 +94,7 @@ y(주간 데이터 레코드로 CCSI를 예측한 값), yhat(월말에 제공되
 - matplotlib 3.2.2
 
 ## 4. 코드 실행 및 결과 재현 방법
+: 최종 선택한 방법과 모델의 코드 재현 방법
 
 #### 1) 데이터셋 준비(save to db table)
 ```
@@ -87,14 +106,12 @@ python get-data.py
 
 i. 주간 데이터를 월간 데이터로 변환 
 - 해당 달의 주간 변수값들의 평균
-- 해당 달의 주간 변수값들의 중앙값
-- 월간 지표인 CCSI에 선형보간법을 적용하여, 주간 데이터에 true y를 생성 
-
 
 ii. 트레이닝 테스트셋 분할(split train, testset)
-
+- 2016~2019년은 training set, 2020년은 test set으로 분할
 ```
 python ./getTrainTestSet/getTrainTestSet.py
 ```
-[getTrainTestSet.py](https://github.com/2hyes/CLI-development/blob/master/getTrainTestSet/getTrainTestSet.py)를 실행하면, 분할된 train, test set이 pkl파일로 저장된다.
+[getTrainTestSet.py](https://github.com/2hyes/CLI-development/blob/master/getTrainTestSet/getTrainTestSet.py)를 실행하면, 본 연구에서 최종으로 선택한 전처리 및 분할 방법이 적용된 train, test set이 pkl파일로 저장된다.
 
+#### 3) 예측 모형 적합(prediction model fitting)
