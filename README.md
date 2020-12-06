@@ -4,6 +4,8 @@
 - 목표: Use news counting and portal trends(google,naver,kakao) data to develope new Composite Leading Indicator <br>
 뉴스기사수와 포털 트렌드의 주간 데이터들을 수집하여, 월간 경제 지표인 소비자심리지수를 예측하여 새로운 주간 경제심리보조지수를 개발한다. 
 
+- 기대 효과:
+
 - 데이터: 
   - 부정적 경제 상황 키워드를 포함하는 뉴스 기사 수
   : 빅카인즈에서 json 파일 다운로드
