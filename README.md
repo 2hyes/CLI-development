@@ -93,6 +93,7 @@ H0: RMSE of model1 = RMSE of model2 (hence, there's no difference of performance
 H1: there's difference of performance.
 
 - 결과 표 <br>
+
 | preprocessing | split | model | parameter | CV RMSE | code |
 |----------|:----------|:----------|:-----------:|:-------:|:----------------:|
 | mean | random | Multiple linear regression:point_left: |  | 3.5626 | [코드](https://github.com/2hyes/CLI-development/blob/master/validation-and-Ttest(dataset_mean_shuffle).ipynb) |
@@ -101,7 +102,7 @@ H1: there's difference of performance.
 | | | Lasso linear regression | alpha = 1 | 3.6391 |  |
 | mean | chronological order | Multiple linear regression |  | 3.4248 | [코드](https://github.com/2hyes/CLI-development/blob/master/validation-and-Ttest(dataset_mean).ipynb) |
 | | | Random forest | max_features = 5<br>n_estimators = 32 |  2.3969  |  |
-| | | GAMS |  | 7.2044 |    |
+| | | GAMS |  | 7.2044 |  |
 | | | Lasso linear regression:point_left: | alpha = 0.1  | 2.8664 |  |
 | median | random | Multiple linear regression:point_left: |  | 3.3128 | [코드](https://github.com/2hyes/CLI-development/blob/master/validation-and-Ttest(dataset_median_shuffle).ipynb) |
 | | | Random forest | max_features = 5<br>n_estimators = 16 |  3.4961  |  |
