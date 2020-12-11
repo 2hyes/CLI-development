@@ -159,3 +159,7 @@ python ./getTrainTestSet/getTrainTestSet.py
 python predict-and-get-weeklyCLI.py
 ```
 [predict-and-get-weeklyCLI.py](https://github.com/2hyes/CLI-development/blob/master/predict-and-get-weeklyCLI.py)를 실행하면, 본 연구에서 최종으로 선택하여 적합시킨 모델이 생성되어, final_model.pkl로 저장된다. 더불어, 주간 데이터를 해당 모델에 input하여 얻은 값들에 이동 평균을 적용하여 주간 경제심리보조지수를 생성한다. 주간 경제심리보조지수는 table형태로 final_table.pkl에 저장된다.
+
+## 5. Reports
+[보고서](https://github.com/2hyes/CLI-development/blob/master/report/report.pdf) 및
+[포스터](https://github.com/2hyes/CLI-development/blob/master/report/poster_report.pdf)는 해당 링크에서 확인 가능하다.
