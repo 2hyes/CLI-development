@@ -1,11 +1,16 @@
 # CLI-development
 ## 1. Overview
 
-- 목표: Use news counting and portal trends(google,naver,kakao) data to develope new Composite Leading Indicator <br>
-뉴스기사수와 포털 트렌드의 주간 데이터들을 수집하여, 월간 경제 지표인 소비자심리지수를 예측하여 새로운 주간 경제심리보조지수를 개발한다. 
+- 목표: 
+
+  Use news counting and portal trends(google,naver,kakao) data to develope new Composite Leading Indicator <br>
+  뉴스기사수와 포털 트렌드의 주간 데이터들을 수집하여, 월간 경제 지표인 소비자심리지수를 예측하여 새로운 주간 경제심리보조지수를 개발한다. 
 
 - 기대 효과:
-
+1. 기존의 경제지표보다 빠른 소비자의 피드백을 통해 부정적인 경제 상황에 보다 탄력적으로 대응이 가능하다.
+2. 소비자심리지수 대비 속보성의 효과를 지닌다.
+3. 표본 설계의 오류에서 벗어나, 보다 정확한 지표를 얻는다.
+  
 - 데이터: 
   - 부정적 경제 상황 키워드를 포함하는 뉴스 기사 수
   : 빅카인즈에서 json 파일 다운로드
