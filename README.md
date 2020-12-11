@@ -96,8 +96,11 @@ y(월말에 제공되는 CCSI), yhat(주간 데이터 레코드로 CCSI를 예�
 
 - t검정(significance level = 0.05, two-sided test) <br>
 
-H0: RMSE of model1 = RMSE of model2 (hence, there's no difference of performance between two models) <br>
+```
+H0: RMSE of model1 = RMSE of model2 
+hence, there's no difference of performance between two models.
 H1: there's difference of performance.
+```
 
 - 결과 표 <br>
 
