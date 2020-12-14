@@ -22,41 +22,42 @@
   : 한국은행 경제통계시스템 API 활용
 
   - 파일 소개
-```
-  📦CLI-development
- ┣ 📂data
- ┃ ┣ 📜all-news.csv
- ┃ ┣ 📜bigkinds.json
- ┃ ┣ 📜googletrend.csv
- ┃ ┗ 📜kakaotrend.csv
- ┣ 📂dataset
- ┃ ┣ 📂dataset_mean
- ┃ ┃ ┣ 📜ccsi.pkl
- ┃ ┃ ┣ 📜predictors.pkl
- ┃ ┃ ┣ 📜X_test.pkl
- ┃ ┃ ┣ 📜X_train.pkl
- ┃ ┃ ┣ 📜y_test.pkl
- ┃ ┃ ┗ 📜y_train.pkl
- ┃ ┣ 📂dataset_interpolation
- ┃ ┗ 📂dataset_median
- ┣ 📂getTrainTestSet
- ┃ ┣ 📜getTrainTestSet.py
- ┃ ┣ 📜getTrainTestSet_interpolation.py
- ┃ ┗ 📜getTrainTestSet_median.py
- ┣ 📜check-google-trends-with-CCI.ipynb
- ┣ 📜demonstrate_CLI-validity.ipynb
- ┣ 📜final_model.pkl
- ┣ 📜final_scaler.pkl
- ┣ 📜final_table.pkl
- ┣ 📜get-data.py
- ┣ 📜predict-and-get-weeklyCLI.py
- ┣ 📜validation-and-Ttest(dataset_interpolation).ipynb
- ┣ 📜validation-and-Ttest(dataset_interpolation_shuffle).ipynb
- ┣ 📜validation-and-Ttest(dataset_mean).ipynb
- ┣ 📜validation-and-Ttest(dataset_mean_shuffle).ipynb
- ┣ 📜validation-and-Ttest(dataset_median).ipynb
- ┗ 📜validation-and-Ttest(dataset_median_shuffle).ipynb
-```
+~~~
+.
+├── data
+│   ├── all-news.csv
+│   ├── bigkinds.json
+│   ├── googletrend.csv
+│   └── kakaotrend.csv
+│
+├── dataset
+│   ├── dataset_interpolation
+│   │   └── # getTrainTestSet_interpolation.py를 실행하세요.
+│   ├── dataset_mean
+│   │   └── # getTrainTestSet.py를 실행하세요.
+│   └── dataset_median
+│       └── # getTrainTestSet_median.py를 실행하세요.
+│
+├── getTrainTestSet
+│   ├── getTrainTestSet.py
+│   ├── getTrainTestSet_interpolation.py
+│   └── getTrainTestSet_median.py
+│
+├── check-google-trends-with-CCI.ipynb
+├── demonstrate_CLI-validity.ipynb
+├── final_model.pkl
+├── final_scaler.pkl
+├── final_table.pkl
+├── get-data.py
+├── predict-and-get-weeklyCLI.py
+├── validation-and-Ttest(dataset_interpolation).ipynb
+├── validation-and-Ttest(dataset_interpolation_shuffle).ipynb
+├── validation-and-Ttest(dataset_mean).ipynb
+├── validation-and-Ttest(dataset_mean_shuffle).ipynb
+├── validation-and-Ttest(dataset_median).ipynb
+└── validation-and-Ttest(dataset_median_shuffle).ipynb
+~~~
+
 
 ## 2. Development environment
 1) 개발 환경
@@ -158,7 +159,7 @@ python ./getTrainTestSet/getTrainTestSet.py
 ```
 python predict-and-get-weeklyCLI.py
 ```
-[predict-and-get-weeklyCLI.py](https://github.com/2hyes/CLI-development/blob/master/predict-and-get-weeklyCLI.py)를 실행하면, 본 연구에서 최종으로 선택하여 적합시킨 모델이 생성되어, final_model.pkl로 저장된다. 더불어, 주간 데이터를 해당 모델에 input하여 얻은 값들에 이동 평균을 적용하여 주간 경제심리보조지수를 생성한다. 주간 경제심리보조지수는 table형태로 final_table.pkl에 저장된다.
+[predict-and-get-weeklyCLI.py](https://github.com/2hyes/CLI-development/blob/master/predict-and-get-weeklyCLI.py)를 실행하면, 본 연구에서 최종으로 선택하여 적합시킨 모델이 생성되어, final_model.pkl로 저장된다. 더불어, 주간 데이터를 해당 모델에 input하여 얻은 값들에 **이동 평균(moving average)을 적용**하여 주간 경제심리보조지수를 생성한다. 주간 경제심리보조지수는 table형태로 final_table.pkl에 저장된다.
 
 ## 5. Reports
 [보고서](https://github.com/2hyes/CLI-development/blob/master/report/report.pdf) 및
